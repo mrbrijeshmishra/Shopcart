@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>Shopcart | Contact us</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-2">
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="back text-light text-center mb-2 p-2">mishrabrijesh255@gmail.com</div>
+            <div class="back text-light text-center mb-2 p-2">8130775846</div>
+            <div class="back text-light text-center mb-2 p-2">Shakti Khand 2</div>
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="450px" id="gmap_canvas" src="https://maps.google.com/maps?q=Plot%20No%20197,%20193/07,%20near%20D%20MALL,%20Shakti%20Khand%202,%20Indirapuram,%20Ghaziabad,%20Uttar%20Pradesh%20201014&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <h5 class="back text-center text-light p-2">Contact Pgae</h5>
+            {% for i in messages %}
+            <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                {{i}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="text" class="form-control" name="mobile" placeholder="Enter Your Mobile Number" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Your Email ID" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" placeholder="Enter Subject" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea name="message" class="form-control" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn back text-center text-light p-2 w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

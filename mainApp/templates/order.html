@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load mytags %}
+{% block title %}
+<title>Shopcart | Orders Page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-2">
+    <h5 class="back text-light text-center p-2">Order History Section</h5>
+    <div class="row">
+        {% for item in orders %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th>Checkout ID</th>
+                        <td>{{item.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Mode</th>
+                        <td>{{item.paymentmode|paymentMode}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment Status</th>
+                        <td>{{item.paymentstatus|paymentStatus}}</td>
+                    </tr>
+                    <tr>
+                        <th>Order Status</th>
+                        <td>{{item.orderstatus|orderStatus}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>&#8377;{{item.total}}</td>
+                    </tr>
+                    <tr>
+                        <th>Shipping</th>
+                        <td>&#8377;{{item.shipping}}</td>
+                    </tr>
+                    <tr>
+                        <th>Final</th>
+                        <td>&#8377;{{item.final}}</td>
+                    </tr>
+                    {% if item.rppid %}
+                    <tr>
+                        <th>Razor Pay Payment Id</th>
+                        <td>{{item.rppid}}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-8 col-sm-6 col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Maincategory</th>
+                        <th>Subcategory</th>
+                        <th>Brand</th>
+                        <th>Colour</th>
+                        <th>Size</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+                    {% for i in item.id|checkoutProducts %}
+                    <tr>
+                        <td><img src="{{i.pic}}" width="80px" height="60px" class="rounded"></td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.maincategory}}</td>
+                        <td>{{i.subcategory}}</td>
+                        <td>{{i.brand}}</td>
+                        <td>{{i.color}}</td>
+                        <td>{{i.size}}</td>
+                        <td>&#8377;{{i.price}}</td>
+                        <td>{{i.qty}}</td>
+                        <td>&#8377;{{i.total}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <hr style="border:5px solid gray">
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

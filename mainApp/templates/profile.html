@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>Shopcart | Profile</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-2">
+<div class="row">
+    <div class="col-md-6 col-12">
+        {% if user.pic1 %}
+        <img src="{{user.pic1.url}}" width="100%" height="550px" alt="">
+        {% else %}
+        <img src="{% static 'images/noimage.png' %}" height='500px'>
+        {% endif %}
+    </div>
+    <div class="col-md-6 col-12 p-2">
+        <h5 class="back text-light text-center p-1">Buyer Section</h5>
+        <h6 class="text-center">Welcome {{request.user.username}}</h6>
+        <table class="table">
+            <tr>
+                <td>Username</td>
+                <th>{{user.username}}</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <th>{{user.name}}</th>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <th>{{user.phone}}</th>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <th>{{user.email}}</th>
+            </tr>
+            <tr>
+                <td>Flat,House no.,Building</td>
+                <th>{{user.address1}}</th>
+            </tr>
+            <tr>
+                <td>Area,Street,Sector,Village</td>
+                <th>{{user.address2}}</th>
+            </tr>
+            <tr>
+                <td>Town or Locality</td>
+                <th>{{user.address3}}</th>
+            </tr>
+            <tr>
+                <td>Pin Code</td>
+                <th>{{user.pin}}</th>
+            </tr>
+            <tr>
+                <td>City</td>
+                <th>{{user.city}}</th>
+            </tr>
+            <tr>
+                <td>State</td>
+                <th>{{user.state}}</th>
+            </tr>
+            <tr>
+                <td colspan="2"><a href="/update_profile/" class="btn back mybtn btn-sm text-light w-100">Update Profile</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+{% endblock %}
